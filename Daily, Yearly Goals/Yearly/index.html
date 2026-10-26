@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Bamboo Slip - Annual Goals</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- p5.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+
+    <!-- Matter.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  </head>
+
+  <body>
+    <main id="canvas-container"></main>
+
+    <div class="toolbox">
+      <button class="tool-button active" id="brush-tool" aria-label="Brush" title="Brush">
+        <svg viewBox="0 0 40 40">
+          <path
+            d="M27 5 L34 12 L16 30 L9 32 L11 25 Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+
+          <path d="M9 32 L7 35 L13 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+
+        <span>Brush</span>
+      </button>
+
+      <button class="tool-button" id="knife-tool" aria-label="Cutting knife" title="Cutting knife">
+        <svg viewBox="0 0 40 40">
+          <path
+            d="M7 29 L27 9 L34 6 L31 14 L11 34 Z"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linejoin="round"
+          />
+
+          <path d="M7 29 L11 34 L16 29" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+        </svg>
+
+        <span>Knife</span>
+      </button>
+    </div>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+/* ---------- Base ---------- */
+:root {
+  --ink: #4a3320;
+  --ink-soft: #b9b2a8;
+  --line: #e6e1d9;
+  --wood: #c8a57a;
+
+  --font:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic",
+    sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  overflow: hidden;
+
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  z-index: 1;
+}
+
+#note-input {
+  position: fixed;
+  top: 28px;
+  left: 32px;
+  z-index: 10;
+  width: 240px;
+  padding: 10px 2px;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  outline: none;
+  -webkit-user-select: text;
+  user-select: text;
+  transition: border-color 0.25s ease;
+}
+
+#note-input::placeholder {
+  color: var(--ink-soft);
+}
+
+#note-input:focus {
+  border-bottom-color: var(--wood);
+}
+
+#slip-editor {
+  position: fixed;
+  z-index: 20;
+  display: none;
+  box-sizing: border-box;
+  margin: 0;
+  /* Leave room for the string hole on the left of the slip */
+  padding: 0 14px 0 34px;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  caret-color: var(--ink);
+  font-family: var(--font);
+  font-weight: 500; /* matches the weight inscribed on the slip */
+  text-align: center;
+  outline: none;
+  -webkit-user-select: text;
+  user-select: text;
+}

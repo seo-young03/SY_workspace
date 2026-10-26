@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.project-menu {
+  position: fixed;
+  top: 18px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px;
+  border: 1px solid rgba(220, 215, 205, 0.85);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 3px 14px rgba(55, 45, 30, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.menu-button {
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 15px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: #8d887e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.menu-button .number {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+.menu-button .label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.menu-button:hover {
+  background: #f7f5f1;
+  color: #51483c;
+}
+
+.menu-button.active {
+  border-color: #d8d0c2;
+  background: #f3f0e9;
+  color: #514333;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.project-frame {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.project-frame.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 600px) {
+  .project-menu {
+    top: 12px;
+    right: 12px;
+    gap: 3px;
+    padding: 4px;
+  }
+
+  .menu-button {
+    min-height: 34px;
+    gap: 6px;
+    padding: 0 10px;
+  }
+
+  .menu-button .label {
+    font-size: 9px;
+  }
+}
