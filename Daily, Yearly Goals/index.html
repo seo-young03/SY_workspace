@@ -1,67 +1,76 @@
 <!doctype html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Goals Interaction</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <nav class="project-menu" aria-label="프로젝트 선택">
-    <button class="menu-button active" type="button" data-project="daily" aria-pressed="true">
-      <span class="number">01</span>
-      <span class="label">DAILY GOALS</span>
-    </button>
-    <button class="menu-button" type="button" data-project="yearly" aria-pressed="false">
-      <span class="number">02</span>
-      <span class="label">YEARLY GOALS</span>
-    </button>
-  </nav>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goals Interaction</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-  <main class="content">
-    
-      id="daily-frame"
-      class="project-frame active"
-      src="Daily/index.html"
-      title="Daily Goals"
-      allow="clipboard-read; clipboard-write">
-    </iframe>
+  <body>
+    <nav class="project-menu" aria-label="프로젝트 선택">
+      <button class="menu-button active" type="button" data-project="daily" aria-pressed="true">
+        <span class="number">01</span>
+        <span class="label">DAILY GOALS</span>
+      </button>
 
-    <iframe
-      id="yearly-frame"
-      class="project-frame"
-      src="Yearly/index.html"
-      title="Yearly Goals"
-      allow="clipboard-read; clipboard-write">
-    </iframe>
-  </main>
+      <button class="menu-button" type="button" data-project="yearly" aria-pressed="false">
+        <span class="number">02</span>
+        <span class="label">YEARLY GOALS</span>
+      </button>
+    </nav>
 
-  <script>
-    const buttons = document.querySelectorAll(".menu-button");
-    const frames = {
-      daily: document.getElementById("daily-frame"),
-      yearly: document.getElementById("yearly-frame")
-    };
+    <main class="content">
+      <!-- DAILY GOALS -->
+      <iframe
+        id="daily-frame"
+        class="project-frame active"
+        src="Daily/index.html"
+        title="Daily Goals"
+        allow="clipboard-read; clipboard-write"
+      >
+      </iframe>
 
-    function showProject(projectName) {
-      Object.entries(frames).forEach(([name, frame]) => {
-        const isActive = name === projectName;
-        frame.classList.toggle("active", isActive);
-        frame.setAttribute("aria-hidden", String(!isActive));
-      });
+      <!-- YEARLY GOALS -->
+      <iframe
+        id="yearly-frame"
+        class="project-frame"
+        src="Yearly/index.html"
+        title="Yearly Goals"
+        allow="clipboard-read; clipboard-write"
+      >
+      </iframe>
+    </main>
+
+    <script>
+      const buttons = document.querySelectorAll(".menu-button");
+
+      const frames = {
+        daily: document.getElementById("daily-frame"),
+        yearly: document.getElementById("yearly-frame"),
+      };
+
+      function showProject(projectName) {
+        Object.entries(frames).forEach(([name, frame]) => {
+          const isActive = name === projectName;
+
+          frame.classList.toggle("active", isActive);
+          frame.setAttribute("aria-hidden", String(!isActive));
+        });
+
+        buttons.forEach((button) => {
+          const isActive = button.dataset.project === projectName;
+
+          button.classList.toggle("active", isActive);
+          button.setAttribute("aria-pressed", String(isActive));
+        });
+      }
 
       buttons.forEach((button) => {
-        const isActive = button.dataset.project === projectName;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-pressed", String(isActive));
+        button.addEventListener("click", () => {
+          showProject(button.dataset.project);
+        });
       });
-    }
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        showProject(button.dataset.project);
-      });
-    });
-  </script>
-</body>
+    </script>
+  </body>
 </html>
