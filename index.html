@@ -2,11 +2,14 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <!-- 모바일 필수: 이 태그가 없으면 폰에서 PC용 화면처럼 축소되어 터치가 스크롤/확대로 해석됨 -->
+
+    <!-- 모바일 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+
     <title>과제 모음</title>
+
     <style>
-      /* 허브 페이지는 절대 스크롤/선택되지 않게 고정 (아이폰에서 터치가 페이지 스크롤로 새는 것 방지) */
+      /* 허브 페이지 스크롤 방지 */
       html,
       body {
         height: 100%;
@@ -18,6 +21,7 @@
         -webkit-touch-callout: none;
         font-family: sans-serif;
       }
+
       /* 왼쪽 메뉴 */
       #menu {
         position: fixed;
@@ -29,13 +33,15 @@
         box-sizing: border-box;
         background: #fff;
       }
+
       #menu a {
         display: block;
         margin-bottom: 10px;
         cursor: pointer;
         color: blue;
       }
-      /* iframe 영역: 메뉴(100px)를 뺀 나머지 화면 전체 */
+
+      /* iframe 영역 */
       #stage {
         position: fixed;
         top: 0;
@@ -44,6 +50,7 @@
         left: 100px;
         overflow: hidden;
       }
+
       #viewer {
         display: block;
         width: 100%;
@@ -52,11 +59,15 @@
       }
     </style>
   </head>
+
   <body>
     <div id="menu">
       <a onclick="loadHomework('Homework1')">Homework1</a>
       <a onclick="loadHomework('Homework2')">Homework2</a>
       <a onclick="loadHomework('Homework3')">Homework3</a>
+
+      <!-- 새 프로젝트 추가 -->
+      <a onclick="loadHomework('Daily, Yearly Goals')"> Daily, Yearly Goals </a>
     </div>
 
     <div id="stage">
@@ -65,9 +76,9 @@
     </div>
 
     <script>
-      // 메뉴 클릭 시 iframe에 해당 폴더의 index.html을 불러옴
+      // 메뉴 클릭 시 해당 폴더의 index.html 불러오기
       function loadHomework(folderName) {
-        document.getElementById("viewer").src = folderName + "/index.html";
+        document.getElementById("viewer").src = encodeURIComponent(folderName) + "/index.html";
       }
     </script>
   </body>
